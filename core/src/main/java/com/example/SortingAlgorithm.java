@@ -2,11 +2,7 @@ package com.example;
 
 import java.util.concurrent.TimeUnit;
 
-public class Sort {
-
-    public String hello(){
-        return "Hello world pasindu";
-    }
+public class SortingAlgorithm {
 
     void checkSort(int [] arr, String name){
         long start = System.nanoTime();
@@ -32,7 +28,7 @@ public class Sort {
         }
     }
 
-    public void selectionSort(int [] arr){
+    public int [] selectionSort(int [] arr){
         int n = arr.length;
 
         // One by one move boundary of unsorted subarray
@@ -50,10 +46,10 @@ public class Sort {
             arr[min_idx] = arr[i];
             arr[i] = temp;
         }
-        displayArray(arr);
+        return (arr);
     }
 
-    public void bubbleSort(int arr[])
+    public int [] bubbleSort(int arr[])
     {
         int n = arr.length;
         for (int i = 0; i < n-1; i++)
@@ -65,10 +61,10 @@ public class Sort {
                     arr[j] = arr[j+1];
                     arr[j+1] = temp;
                 }
-        displayArray(arr);
+        return (arr);
     }
 
-    public void insertionSort(int arr[])
+    public int [] insertionSort(int arr[])
     {
         int n = arr.length;
         int i, key, j;
@@ -84,7 +80,7 @@ public class Sort {
             }
             arr[j+1] = key;
         }
-        displayArray(arr);
+        return (arr);
 
     }
 }

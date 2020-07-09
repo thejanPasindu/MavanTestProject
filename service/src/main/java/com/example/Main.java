@@ -4,10 +4,11 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
-public class main {
+public class Main {
+
     public static void main(String[] args) {
 
-        Sort s = new Sort();
+        SortingAlgorithm sortingAlgorithm = new SortingAlgorithm();
 //        System.out.println(s.hello());
 
         Scanner scanner = new Scanner(System.in);
@@ -19,29 +20,36 @@ public class main {
 //        System.out.println("No. of elements in the integer array: " + intArr.length);
 
         long start = System.nanoTime();
-        s.selectionSort(intArr);
+        displayArray(sortingAlgorithm.selectionSort(intArr));
         long end = System.nanoTime();
         long timeInMillis = TimeUnit.MICROSECONDS.convert(end - start, TimeUnit.NANOSECONDS);
         System.out.println("Time spend in ms: " + timeInMillis);
 
         start = System.nanoTime();
-        s.bubbleSort(intArr);
+        displayArray(sortingAlgorithm.bubbleSort(intArr));
         end = System.nanoTime();
         timeInMillis = TimeUnit.MICROSECONDS.convert(end - start, TimeUnit.NANOSECONDS);
         System.out.println("Time spend in ms: " + timeInMillis);
 
         start = System.nanoTime();
-        s.bubbleSort(intArr);
+        displayArray(sortingAlgorithm.bubbleSort(intArr));
         end = System.nanoTime();
         timeInMillis = TimeUnit.MICROSECONDS.convert(end - start, TimeUnit.NANOSECONDS);
         System.out.println("Time spend in ms: " + timeInMillis);
 
         start = System.nanoTime();
-        s.insertionSort(intArr);
+        displayArray(sortingAlgorithm.insertionSort(intArr));
         end = System.nanoTime();
         timeInMillis = TimeUnit.MICROSECONDS.convert(end - start, TimeUnit.NANOSECONDS);
         System.out.println("Time spend in ms: " + timeInMillis);
 
 //        1,100,30,10,5,2,5,70,800,25,1000,44
+    }
+
+    public static void displayArray(int[] arr){
+        for (int i: arr
+        ) {
+            System.out.println(i);
+        }
     }
 }
