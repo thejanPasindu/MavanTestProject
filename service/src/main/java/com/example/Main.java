@@ -1,55 +1,55 @@
 package com.example;
 
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        SortingAlgorithm sortingAlgorithm = new SortingAlgorithm();
-//        System.out.println(s.hello());
+        int [] intNumArray={};
 
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Enter a numbers separated by ',' :");
-        String Num = scanner.nextLine();
-        String [] stringTokens = Num.split(",");
-        int [] intArr = Stream.of(stringTokens).mapToInt(strToken -> Integer.parseInt(strToken)).toArray();
+        String numArray = scanner.nextLine();
 
-//        System.out.println("No. of elements in the integer array: " + intArr.length);
+        try {
+            String [] stringTokens = numArray.split(",");
+            intNumArray = Stream.of(stringTokens).mapToInt(strToken -> Integer.parseInt(strToken)).toArray();
+        }catch (Exception exception){
+            System.out.println(exception.getMessage());
+            return;
+        }
 
-        long start = System.nanoTime();
-        displayArray(sortingAlgorithm.selectionSort(intArr));
-        long end = System.nanoTime();
-        long timeInMillis = TimeUnit.MICROSECONDS.convert(end - start, TimeUnit.NANOSECONDS);
-        System.out.println("Time spend in ms: " + timeInMillis);
+        SortingAlgorithm sortingAlgorithm = new SortingAlgorithm(intNumArray);
 
-        start = System.nanoTime();
-        displayArray(sortingAlgorithm.bubbleSort(intArr));
-        end = System.nanoTime();
-        timeInMillis = TimeUnit.MICROSECONDS.convert(end - start, TimeUnit.NANOSECONDS);
-        System.out.println("Time spend in ms: " + timeInMillis);
+        System.out.println("Selection Sort");
+        sortingAlgorithm.checkSort("select");
+        System.out.println("Sorted Array: ");
+        displayArray(sortingAlgorithm.arr);
+        System.out.println("Time spend in ms: " + sortingAlgorithm.exeTime);
 
-        start = System.nanoTime();
-        displayArray(sortingAlgorithm.bubbleSort(intArr));
-        end = System.nanoTime();
-        timeInMillis = TimeUnit.MICROSECONDS.convert(end - start, TimeUnit.NANOSECONDS);
-        System.out.println("Time spend in ms: " + timeInMillis);
+        System.out.println("Bubble Sort");
+        sortingAlgorithm.checkSort("bubble");
+        System.out.println("Sorted Array: ");
+        displayArray(sortingAlgorithm.arr);
+        System.out.println("Time spend in ms: " + sortingAlgorithm.exeTime);
 
-        start = System.nanoTime();
-        displayArray(sortingAlgorithm.insertionSort(intArr));
-        end = System.nanoTime();
-        timeInMillis = TimeUnit.MICROSECONDS.convert(end - start, TimeUnit.NANOSECONDS);
-        System.out.println("Time spend in ms: " + timeInMillis);
+        System.out.println("Insertion Sort");
+        sortingAlgorithm.checkSort("insert");
+        System.out.println("Sorted Array: ");
+        displayArray(sortingAlgorithm.arr);
+        System.out.println("Time spend in ms: " + sortingAlgorithm.exeTime);
 
-//        1,100,30,10,5,2,5,70,800,25,1000,44
+
+//        1,100,30,10,5,2,5,70,800,25,1000,44,500,500,800,5,3,4,7,9,52,63,562,75,698,253,45
     }
 
     public static void displayArray(int[] arr){
-        for (int i: arr
-        ) {
-            System.out.println(i);
+        for (int i: arr) {
+            System.out.print(i + " ");
         }
+        System.out.println();
     }
 }
